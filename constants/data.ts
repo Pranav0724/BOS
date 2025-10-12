@@ -23,7 +23,7 @@ export const categories: Category[] = [
   {
     id: '4',
     name: 'Electronics',
-    icon: 'smartphone',
+    icon: 'washingmachine',
     gradient: Colors.categories.electronics,
   },
 ];

@@ -13,11 +13,11 @@ export const Colors = {
       from: '#60A5FA',
       to: '#A78BFA',
     },
-    property: {
+    furniture: {
       from: '#FCA5A5',
       to: '#FBBF24',
     },
-    jobs: {
+    computers: {
       from: '#86EFAC',
       to: '#6EE7B7',
     },

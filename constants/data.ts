@@ -10,15 +10,15 @@ export const categories: Category[] = [
   },
   {
     id: '2',
-    name: 'Property',
+    name: 'Furniture',
     icon: 'home',
-    gradient: Colors.categories.property,
+    gradient: Colors.categories.furniture,
   },
   {
     id: '3',
-    name: 'Jobs',
+    name: 'Laptops & Mobiles',
     icon: 'briefcase',
-    gradient: Colors.categories.jobs,
+    gradient: Colors.categories.computers,
   },
   {
     id: '4',

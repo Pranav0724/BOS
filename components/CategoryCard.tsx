@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { Car, Sofa, Briefcase, Smartphone } from 'lucide-react-native';
+import { Car, Hop as HomeIcon, Briefcase, Smartphone } from 'lucide-react-native';
 import { Category } from '@/types';
 
 const { width } = Dimensions.get('window');
@@ -17,8 +17,8 @@ export default function CategoryCard({ category, onPress }: CategoryCardProps) {
     switch (category.icon) {
       case 'car':
         return <Car {...iconProps} />;
-      case 'sofa':
-        return <Sofa {...iconProps} />;
+      case 'home':
+        return <HomeIcon {...iconProps} />;
       case 'briefcase':
         return <Briefcase {...iconProps} />;
       case 'smartphone':

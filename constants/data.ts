@@ -10,14 +10,14 @@ export const categories: Category[] = [
   },
   {
     id: '2',
-    name: 'Furniture',
-    icon: 'home',
+    name: 'Furnitures',
+    icon: 'sofa',
     gradient: Colors.categories.furniture,
   },
   {
     id: '3',
     name: 'Laptops & Mobiles',
-    icon: 'briefcase',
+    icon: 'laptop',
     gradient: Colors.categories.computers,
   },
   {

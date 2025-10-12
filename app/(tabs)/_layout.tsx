@@ -1,5 +1,5 @@
 import { Tabs } from 'expo-router';
-import { Hop as Home, Grid3x3, CirclePlus as PlusCircle, MessageCircle, User } from 'lucide-react-native';
+import { House as Home, Grid3x3, CirclePlus as PlusCircle, MessageCircle, User } from 'lucide-react-native';
 import { View, StyleSheet, Platform } from 'react-native';
 
 export default function TabLayout() {

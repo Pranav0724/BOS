@@ -17,10 +17,13 @@ import SearchBar from '@/components/SearchBar';
 import CategoryCard from '@/components/CategoryCard';
 import ListingCard from '@/components/ListingCard';
 import { Star } from 'lucide-react-native';
+import { useRouter } from 'expo-router';
 
 const { width } = Dimensions.get('window');
 
 export default function HomeScreen() {
+   const router = useRouter();
+
   const [searchQuery, setSearchQuery] = useState('');
 
   const handleCategoryPress = (categoryName: string) => {
@@ -49,7 +52,7 @@ export default function HomeScreen() {
               />
             </View>
             <TouchableOpacity style={styles.authButton} activeOpacity={0.8}>
-              <Text style={styles.authButtonText}>Sign in/Login</Text>
+              <Text style={styles.authButtonText}onPress={() => router.push('/auth' as any)}>Sign in/Login</Text>
             </TouchableOpacity>
           </View>
 

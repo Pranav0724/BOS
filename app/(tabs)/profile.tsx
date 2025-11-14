@@ -80,7 +80,7 @@ export default function ProfileScreen() {
               <Text style={styles.loginButtonText}>Sign in / Login</Text>
             </TouchableOpacity>
 
-            <View style={styles.guestSection}>
+            {/* <View style={styles.guestSection}>
               <Text style={styles.guestSectionTitle}>Browse as Guest</Text>
               <MenuItem
                 icon={Settings}
@@ -92,7 +92,7 @@ export default function ProfileScreen() {
                 title="Help & Support"
                 onPress={() => console.log('Help pressed')}
               />
-            </View>
+            </View> */}
           </View>
         </View>
       </SafeAreaView>

@@ -202,6 +202,7 @@ export default function AuthScreen() {
                 secureTextEntry
                 value={formData.password}
                 onChangeText={(text) => setFormData({ ...formData, password: text })}
+                keyboardType= "visible-password"
               />
             </View>
 

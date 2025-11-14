@@ -29,48 +29,92 @@ export default function AuthScreen() {
   });
   const [error, setError] = useState('');
 
-  const handleAuth = async () => {
-    if (!formData.email || !formData.password) {
-      setError('Please fill in all fields');
+const handleAuth = async () => {
+  const isValidEmail = (email) =>
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+  // Basic validations
+  if (!formData.email || !formData.password) {
+    setError("Please fill in email & password");
+    return;
+  }
+
+  if (!isValidEmail(formData.email)) {
+    setError("Please enter a valid email");
+    return;
+  }
+
+  // Extra fields ONLY required during Signup
+  if (!isLogin) {
+    if (formData.username.length < 3) {
+      setError("Full name is required");
       return;
     }
 
     if (formData.aadhaar.length !== 12) {
-      setError('Aadhaar must be 12 digits');
+      setError("Aadhaar must be 12 digits");
       return;
     }
 
     if (formData.phone.length !== 10) {
-      setError('Phone number must be 10 digits');
+      setError("Phone number must be 10 digits");
       return;
     }
+  }
 
-    if (formData.password.length < 6) {
-      setError('Password must be at least 6 characters');
-      return;
+  try {
+    setLoading(true);
+    setError("");
+
+    const serverURL = process.env.EXPO_PUBLIC_API_URL;
+
+    // Correct endpoint switching
+    const apiUrl = isLogin
+      ? `${serverURL}/user/login`
+      : `${serverURL}/user/register`;
+
+    // Body content (signup needs extra fields)
+    const body = JSON.stringify(
+      isLogin
+        ? {
+            email: formData.email,
+            password: formData.password,
+          }
+        : {
+            email: formData.email,
+            password: formData.password,
+            username: formData.username,
+            aadhaar: formData.aadhaar,
+            phone: formData.phone,
+          }
+    );
+
+    const response = await fetch(apiUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body,
+    });
+
+    const result = await response.json();
+
+    if (!response.ok) {
+      throw new Error(result?.message || "Authentication error");
     }
 
-    try {
-      setLoading(true);
-      setError('');
+    // Success message
+    alert(isLogin ? "Signed in successfully!" : "Account created successfully!");
 
-      if (isLogin) {
-        // Simulate successful Login
-        alert(
-          'Account created successfully! (stubbed — no backend configured)'
-        );
-      } else {
-        // Simulate successful signin
-        alert('Signed in successfully! (stubbed — no backend configured)');
-      }
+    router.back();
+  } catch (err: any) {
+    setError(err?.message || "Authentication failed");
+  } finally {
+    setLoading(false);
+  }
+};
 
-      router.back();
-    } catch (err: any) {
-      setError(err?.message || 'Authentication failed');
-    } finally {
-      setLoading(false);
-    }
-  };
+
 
   return (
     <SafeAreaView style={styles.container}>

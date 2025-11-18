@@ -17,7 +17,7 @@ import { Mail, Smartphone, NotebookTabs, Lock, User } from 'lucide-react-native'
 
 export default function AuthScreen() {
   const router = useRouter();
-  const [isLogin, setIsLogin] = useState(true); // ✅ Default = Login
+  const [isLogin, setIsLogin] = useState(true);
   const [loading, setLoading] = useState(false);
 
   const [formData, setFormData] = useState({
